@@ -1,4 +1,5 @@
 //jshint esversion:6
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -29,7 +30,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://arv_77:pWWm9FvpZTZWqGq@cluster0.zryg6px.mongodb.net/userDB", { useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASS}@cluster0.zryg6px.mongodb.net/userDB`, { useNewUrlParser: true });
 
 const userSchema = new mongoose.Schema({
   email: String,
