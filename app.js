@@ -203,6 +203,10 @@ app.get("/:shortUrl", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, () => {
   console.log("server started at port 3000");
 });
